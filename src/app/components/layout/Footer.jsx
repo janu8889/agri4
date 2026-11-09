@@ -95,7 +95,7 @@ export default function Footer() {
                 Sellers Trading Post
               </h2>
               <div className="flex flex-col gap-1">
-                <span className="text-[16px]">2151 US-412 </span>
+                <span className="text-[16px]">2151 US-412 E </span>
                 <span className="text-[16px]">Siloam Springs, AR 72761</span>
                 <a className="text-[16px]" href="tel:+14793739708">
                   (479) 373-9708

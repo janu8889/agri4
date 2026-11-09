@@ -32,7 +32,7 @@ function ContactSection({ LocationIcon, ClockIcon, PhoneIcon, ExternalIcon }) {
                 </h4>
 
                 <p className="text-[#555] leading-relaxed">
-                  2151 US-412
+                  2151 US-412 E
                   <br />
                   Siloam Springs, AR 72761
                 </p>
@@ -90,7 +90,7 @@ function ContactSection({ LocationIcon, ClockIcon, PhoneIcon, ExternalIcon }) {
               </div>
 
               <p className="text-[#555] mb-8">
-                2151 US-412
+                2151 US-412 E
                 <br />
                 Siloam Springs, AR 72761
               </p>

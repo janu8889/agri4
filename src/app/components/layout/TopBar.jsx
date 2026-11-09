@@ -46,7 +46,7 @@ export default function TopBar() {
             <FaMapMarkerAlt className="text-[#c9a227]" />
             <span></span>
           </div>
-            2151 US-412, Siloam Springs, AR 72761
+            2151 US-412 E, Siloam Springs, AR 72761
         </div>
 
       </div>
