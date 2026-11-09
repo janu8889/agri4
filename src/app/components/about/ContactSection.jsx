@@ -32,9 +32,9 @@ function ContactSection({ LocationIcon, ClockIcon, PhoneIcon, ExternalIcon }) {
                 </h4>
 
                 <p className="text-[#555] leading-relaxed">
-                  101 Oak Hill Rd
+                  2151 US-412
                   <br />
-                  Jasper, AL 35504
+                  Siloam Springs, AR 72761
                 </p>
               </div>
             </div>
@@ -69,10 +69,10 @@ function ContactSection({ LocationIcon, ClockIcon, PhoneIcon, ExternalIcon }) {
 
                 <p>
                   <a
-                    href="tel:+12052650469"
+                    href="tel:+000"
                     className="text-[#555] hover:text-[#c9a227] transition-colors"
                   >
-                    (205) 265-0469
+                    (000)
                   </a>
                 </p>
               </div>
@@ -90,13 +90,13 @@ function ContactSection({ LocationIcon, ClockIcon, PhoneIcon, ExternalIcon }) {
               </div>
 
               <p className="text-[#555] mb-8">
-                101 Oak Hill Rd
+                2151 US-412
                 <br />
-                Jasper, AL 35504
+                Siloam Springs, AR 72761
               </p>
 
               <a
-                href="https://maps.app.goo.gl/RA6u61n4CHACCQhd6"
+                href="https://maps.app.goo.gl/KcYoaBDYujx6nSXF9"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#e6c65a] text-black font-semibold px-6 py-3 rounded-xl hover:bg-[#d4b44f] transition-all duration-300"

@@ -26,7 +26,7 @@ export default function TopBar() {
           <div className="flex items-center space-x-2">
             <FaPhoneAlt className="text-[#c9a227]" />
             <a
-              href="tel:+12052650469"
+              href="tel:+000"
               onClick={() => {
                 if (typeof window !== "undefined" && window.fbq) {
                   window.fbq("trackCustom", "Contact", {
@@ -37,7 +37,7 @@ export default function TopBar() {
                 }
               }}
             >
-              (205) 265-0469
+              (000)
            </a>
            </div> 
 
@@ -46,7 +46,7 @@ export default function TopBar() {
             <FaMapMarkerAlt className="text-[#c9a227]" />
             <span></span>
           </div>
-            101 Oak Hill Rd, Jasper, AL 35504
+            2151 US-412, Siloam Springs, AR 72761
         </div>
 
       </div>

@@ -92,13 +92,13 @@ export default function Footer() {
             {/* Contact */}
             <div className="flex flex-col gap-2">
               <h2 className="mb-2 uppercase tracking-wide font-bold text-[18px] text-[#c9a227]">
-                FARLEY TRACTOR CO.
+                Sellers Trading Post
               </h2>
               <div className="flex flex-col gap-1">
-                <span className="text-[16px]">101 Oak Hill Rd </span>
-                <span className="text-[16px]">Jasper, AL 35504</span>
-                <a className="text-[16px]" href="tel:+12052650469">
-                  (205) 265-0469
+                <span className="text-[16px]">2151 US-412 </span>
+                <span className="text-[16px]">Siloam Springs, AR 72761</span>
+                <a className="text-[16px]" href="tel:+000">
+                  (000)
                 </a>
               </div>
             </div>
@@ -233,7 +233,7 @@ export default function Footer() {
                 className="mt-1"
               />
               <span>
-                I consent to be contacted by FARLEY TRACTOR CO. via phone, email, or SMS regarding this inquiry.
+                I consent to be contacted by Sellers Trading Post via phone, email, or SMS regarding this inquiry.
               </span>
             </label>
 

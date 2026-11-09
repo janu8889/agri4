@@ -19,26 +19,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://www.farmerstractors.com"), // pune domeniul tău real
+  metadataBase: new URL("https://www.sellerstradingpost.net"), // pune domeniul tău real
 
   title: {
-    default: "FARLEY TRACTOR CO.",
-    template: "%s | FARLEY TRACTOR CO.",
+    default: "Sellers Trading Post",
+    template: "%s | Sellers Trading Post",
   },
 
   description:
-    "FARLEY TRACTOR CO. offers high-quality agricultural and construction machinery.",
+    "Sellers Trading Post offers high-quality agricultural and construction machinery.",
 
   alternates: {
     canonical: "/", 
   },
 
   openGraph: {
-    title: "FARLEY TRACTOR CO.",
+    title: "Sellers Trading Post",
     description:
       "High-quality agricultural and construction machinery.",
-    url: "https://www.farmerstractors.com",
-    siteName: "FARLEY TRACTOR CO.",
+    url: "https://www.sellerstradingpost.net",
+    siteName: "Sellers Trading Post",
     images: [
       {
         url: "/og-image.jpg",
