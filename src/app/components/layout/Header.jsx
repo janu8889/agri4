@@ -89,13 +89,13 @@ export default function Header() {
   return (
     <header className="sticky top-[54px] z-50 bg-[#eeeeee] text-[#1a1a1a] font-bold text-[18px] shadow-md shadow-black/20">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-2">
-        <Link href="/" className="text-xl">
+        <Link href="https://www.ratinghut.com/companies/sellers-trading-post-sellerstradingpost-net" className="text-xl">
         <Image
           src="/logo.png"
           alt="Logo"
           width={180}
           height={120}
-          style={{ width: "180px", height: "auto" }}
+          style={{ width: "300px", height: "auto" }}
           priority
         />
         </Link>
