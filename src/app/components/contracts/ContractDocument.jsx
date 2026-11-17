@@ -1,5 +1,6 @@
 import SignatureRenderer from "./SignatureRenderer";
 import PaperContractDocument from "./PaperContractDocument";
+import ContractLogo from "./ContractLogo";
 import { signatureMethod } from "@/lib/contracts/security";
 import { contractCompany } from "@/lib/contracts/company";
 import { contractEquipmentItems, equipmentPrice } from "@/lib/contracts/equipment";
@@ -22,7 +23,7 @@ export default function ContractDocument({ contract, signed = false, unsignedMar
   </div>;
 }
 function Page({n,mark,children}){return <section className="contract-letter-page">{mark?<div className="unsigned-mark">UNSIGNED COPY</div>:null}<div className="contract-page-content">{children}</div><footer>{n}</footer></section>}
-function Header({t,contract}){const c=contractCompany(contract);return <header className="letter-header"><img src={t.logoUrl||"/logo.png"} alt={c.name||"Seller company"}/><address><b>{c.name}</b><br/>{c.address}<br/>{c.cityStateZip}<br/>{c.phone}<br/>{c.email}<br/>{c.website}<small>{c.name} is a registered trade name of<br/>{c.legalName}</small></address></header>}
+function Header({t,contract}){const c=contractCompany(contract);return <header className="letter-header"><ContractLogo src={t.logoUrl} alt={c.name||"Seller company"}/><address><b>{c.name}</b><br/>{c.address}<br/>{c.cityStateZip}<br/>{c.phone}<br/>{c.email}<br/>{c.website}<small>{c.name} is a registered trade name of<br/>{c.legalName}</small></address></header>}
 function Title({children,small=false}){return <h2 className={small?"letter-subtitle":"letter-title"}>{children}</h2>}
 function OrderTable({contract:c,delivery=false}){const items=contractEquipmentItems(c);return <><div className="letter-table"><Row cells={[[delivery?"Invoice #":"Order #",c.orderNumber],[delivery?"Delivery Date":"Order Date",date(delivery?c.deliveryDate:c.orderDate)]]}/><Row cells={[["Buyer",buyer(c.buyer)],["Seller",seller(c.seller)]]}/><Row cells={[["Contact",[c.buyer?.contact||c.buyer?.name,c.buyer?.phonePrimary,c.buyer?.phoneSecondary].filter(Boolean).join("\n")],["Delivery Location",c.deliveryAddress]]}/></div><div className="contract-equipment-tables">{items.map((item,index)=><div className="letter-table contract-equipment-table" key={index}>{items.length>1?<div className="contract-equipment-heading">Equipment {index+1}</div>:null}<Row cells={[["Model",item.model],["Year",item.year],["Serial No.",item.serialNumber]]}/><div className="letter-row"><div className="letter-cell"><b>Description &amp; Notes:</b><RichDescription item={item}/></div></div><Row cells={[["Make",item.make],["Hours (if applicable)",item.hours],["Price",priceLabel(item,c,items.length)]]}/></div>)}</div></>}
 function Row({cells}){return <div className="letter-row">{cells.map(([k,v],i)=><div className="letter-cell" key={i}><b>{k}:</b><span>{v||" "}</span></div>)}</div>}

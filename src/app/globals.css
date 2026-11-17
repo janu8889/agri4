@@ -103,6 +103,10 @@
 .contract-document--paper .contract-letter-page--equipment-expanded { height: auto; min-height: 11in; overflow: visible; }
 .contract-document--paper .contract-letter-page--equipment-expanded .contract-page-content { position: relative; inset: auto; min-height: calc(11in - .87in); overflow: visible; padding: .39in .5in .48in; }
 .contract-document--paper .contract-letter-page--equipment-expanded footer { position: static; padding-bottom: .19in; }
+.contract-document--paper .contract-letter-page--auto-fit .contract-page-content { font-size: calc(1em * var(--paper-fit-scale, 1)); }
+.contract-document--paper .contract-letter-page--content-expanded { height: auto; min-height: 11in; overflow: visible; }
+.contract-document--paper .contract-letter-page--content-expanded .contract-page-content { position: relative; inset: auto; min-height: calc(11in - .87in); overflow: visible; padding: .39in .5in .48in; }
+.contract-document--paper .contract-letter-page--content-expanded footer { position: static; padding-bottom: .19in; }
 .paper-page--warranties-declarations> .contract-page-content>h2:first-child { margin-top: .4in; }
 .paper-page--warranties-declarations .paper-signatures { margin-top: .45in; }
 .paper-page--warranties-declarations .declarations-title { margin-top: .62in; margin-bottom: .27in; }

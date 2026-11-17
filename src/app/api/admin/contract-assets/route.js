@@ -13,10 +13,14 @@ const MAX_BYTES = 3 * 1024 * 1024;
 
 export async function GET() {
   await dbConnect();
-  const [assets,template]=await Promise.all([ContractAsset.find({kind:"signature",archivedAt:null}).select("publicId representativeName label size usageCount lastUsedAt createdAt").sort({lastUsedAt:-1,createdAt:-1}).lean(),ContractTemplate.findOne({active:true}).sort({version:-1}).select("sellerRepresentative").lean()]);
+  const [assets,template]=await Promise.all([ContractAsset.find({kind:{$in:["signature","logo"]},archivedAt:null}).select("publicId kind representativeName label size usageCount lastUsedAt createdAt").sort({lastUsedAt:-1,createdAt:-1}).lean(),ContractTemplate.findOne({active:true}).sort({version:-1}).select("sellerRepresentative logoUrl").lean()]);
   const current=template?.sellerRepresentative||DEFAULT_TEMPLATE.sellerRepresentative;
-  const uploaded=assets.map(x=>({...x,url:`/api/contract-assets/${x.publicId}`,name:x.representativeName||x.label||"Seller Representative",isDefault:`/api/contract-assets/${x.publicId}`===current.signatureUrl,builtin:false}));
-  return NextResponse.json({items:[{_id:"builtin-seller-signature",url:BUILTIN_SELLER_SIGNATURE_URL,name:"Daniel R. Petrov",label:"Built-in signature",usageCount:0,lastUsedAt:null,createdAt:null,isDefault:current.signatureUrl===BUILTIN_SELLER_SIGNATURE_URL,builtin:true},...uploaded]},{headers:{"Cache-Control":"no-store, private"}});
+  const signatures=assets.filter(x=>x.kind==="signature").map(x=>({...x,url:`/api/contract-assets/${x.publicId}`,name:x.representativeName||x.label||"Seller Representative",isDefault:`/api/contract-assets/${x.publicId}`===current.signatureUrl,builtin:false}));
+  const currentLogo=template?.logoUrl||DEFAULT_TEMPLATE.logoUrl;
+  const logos=assets.filter(x=>x.kind==="logo").map(x=>({...x,url:`/api/contract-assets/${x.publicId}`,name:x.label||"Uploaded logo",isDefault:`/api/contract-assets/${x.publicId}`===currentLogo,builtin:false}));
+  const signatureItems=[{_id:"builtin-seller-signature",url:BUILTIN_SELLER_SIGNATURE_URL,name:"Daniel R. Petrov",label:"Built-in signature",usageCount:0,lastUsedAt:null,createdAt:null,isDefault:current.signatureUrl===BUILTIN_SELLER_SIGNATURE_URL,builtin:true},...signatures];
+  const logoItems=[{_id:"builtin-site-logo",url:DEFAULT_TEMPLATE.logoUrl,name:"Sellers Trading Post",label:"Site logo",usageCount:0,lastUsedAt:null,createdAt:null,isDefault:currentLogo===DEFAULT_TEMPLATE.logoUrl,builtin:true},...logos];
+  return NextResponse.json({items:signatureItems,signatures:signatureItems,logos:logoItems},{headers:{"Cache-Control":"no-store, private"}});
 }
 
 export async function POST(request) {
@@ -38,8 +42,9 @@ export async function POST(request) {
     if (!matchesImageSignature(data, file.type)) return NextResponse.json({ error: "The selected file is not a valid image." }, { status: 422 });
     await dbConnect();
     const publicId = crypto.randomBytes(24).toString("base64url");
-    await ContractAsset.create({ publicId, kind, contentType: file.type, data, size: data.length, representativeName:kind==="signature"?representativeName:"" });
-    return NextResponse.json({ url: `/api/contract-assets/${publicId}`, publicId });
+    const label=kind==="logo"?String(file.name||"Uploaded logo").replace(/\.[^.]+$/," ").trim().slice(0,120):"";
+    await ContractAsset.create({ publicId, kind, contentType: file.type, data, size: data.length, representativeName:kind==="signature"?representativeName:"",label });
+    return NextResponse.json({ url: `/api/contract-assets/${publicId}`, publicId, label });
   } catch (error) {
     console.error("Contract asset upload failed:", error);
     return NextResponse.json({ error: "The image could not be uploaded." }, { status: 500 });
