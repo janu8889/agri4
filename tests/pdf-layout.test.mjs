@@ -13,6 +13,8 @@ for (const count of [1, 2, 3]) {
       for (let index = 1; index <= count; index++) assert.match(binary, new RegExp(`QA-MODEL-${index}`));
       assert.match(binary, /ESSENTIAL PURPOSE/);
       assert.match(binary, /EACH OF THE PARTIES CERTIFIES/);
+      assert.match(binary, /11-16-2026/);
+      assert.doesNotMatch(binary, /16-11-2026/);
       assertLegalTextStaysAboveFooter(binary);
     });
   }
